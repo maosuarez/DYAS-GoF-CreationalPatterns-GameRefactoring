@@ -24,11 +24,12 @@ public class Game extends Canvas implements Runnable {
 
 	/*Cambiando el valor de esta variable se cambia el diseno del juego
 	 * Se puede variar entre:
-	 * - COLOR
-	 * - DRAW
+	 * - "vectorial-style"
+	 * - "colorful-vectorial-style"
 	 * - IMAGE
 	 */
-	public final Style style = Style.IMAGE;
+	public String estilo = "colorful-vectorial-style";
+	public Style style;
 	
 	private boolean running = false;
 	private Thread thread;
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public void init(){
 		requestFocus();
+		set_style();
 		
 		
 		sprites = new SpritesImageLoader("sprites.png");
@@ -64,6 +66,20 @@ public class Game extends Canvas implements Runnable {
 		player = PlayerFactory.createPlayer((WIDTH * SCALE - IPlayer.WIDTH) / 2, HEIGHT * SCALE - 50 , this);
 		bullets = new BulletController();
 		backgRenderer= BackgroundFactory.createBackground(this);
+	}
+
+	private void set_style(){
+		switch (estilo) {
+			case "colorful-vectorial-style":
+				style = Style.COLOR;
+				break;
+			case "vectorial-style":
+				style = Style.DRAW;
+				break;		
+			default:
+				style = Style.IMAGE;
+				break;
+		}
 	}
 
 	public SpritesImageLoader getSprites(){
