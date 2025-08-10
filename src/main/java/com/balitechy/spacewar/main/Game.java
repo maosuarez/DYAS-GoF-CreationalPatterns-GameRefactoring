@@ -5,10 +5,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+/*import java.awt.image.BufferedImage;*/
 import java.io.IOException;
 
 import javax.swing.JFrame;
+import com.balitechy.spacewar.main.background.IBackground;
+import com.balitechy.spacewar.main.factories.BackgroundFactory;
+import com.balitechy.spacewar.main.factories.PlayerFactory;
+import com.balitechy.spacewar.main.player.IPlayer;
 
 public class Game extends Canvas implements Runnable {
 
@@ -17,25 +21,33 @@ public class Game extends Canvas implements Runnable {
 	public static final int HEIGHT = WIDTH / 12 * 9;
 	public static final int SCALE = 2;
 	public final String TITLE = "Space War 2D";
+
+	/*Cambiando el valor de esta variable se cambia el diseno del juego
+	 * Se puede variar entre:
+	 * - COLOR
+	 * - DRAW
+	 * - IMAGE
+	 */
+	public final Style style = Style.IMAGE;
 	
 	private boolean running = false;
 	private Thread thread;
-	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	/*private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);*/
 	
 	
 	private SpritesImageLoader sprites;
 	
 	//Game components
-	private Player player;
+	private IPlayer player;
 	private BulletController bullets;
-	private BackgroundRenderer backgRenderer;
+	private IBackground backgRenderer;
 	
 	
 	public void init(){
 		requestFocus();
 		
 		
-		sprites = new SpritesImageLoader("/sprites.png");
+		sprites = new SpritesImageLoader("sprites.png");
 		try {			
 			sprites.loadImage();
 		} catch (IOException e) {
@@ -49,9 +61,9 @@ public class Game extends Canvas implements Runnable {
 		
 		
 		// Set player position at the bottom center.
-		player = new Player((WIDTH * SCALE - Player.WIDTH) / 2, HEIGHT * SCALE - 50 , this);
+		player = PlayerFactory.createPlayer((WIDTH * SCALE - IPlayer.WIDTH) / 2, HEIGHT * SCALE - 50 , this);
 		bullets = new BulletController();
-		backgRenderer=new BackgroundRenderer();
+		backgRenderer= BackgroundFactory.createBackground(this);
 	}
 
 	public SpritesImageLoader getSprites(){

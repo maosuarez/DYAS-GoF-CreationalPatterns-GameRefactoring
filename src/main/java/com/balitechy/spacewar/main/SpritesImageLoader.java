@@ -2,6 +2,7 @@ package com.balitechy.spacewar.main;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
@@ -15,7 +16,8 @@ public class SpritesImageLoader {
 	}
 	
 	public BufferedImage loadImage() throws IOException{
-		image = ImageIO.read(getClass().getResource(path));
+		InputStream is = getClass().getClassLoader().getResourceAsStream(this.path);
+		image = ImageIO.read(is);
 		return image;
 	}
 	

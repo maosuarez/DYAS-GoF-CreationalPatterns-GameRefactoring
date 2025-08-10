@@ -3,8 +3,10 @@ package com.balitechy.spacewar.main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
+import com.balitechy.spacewar.main.bullet.IBullet;
+
 public class BulletController {
-	private LinkedList<Bullet> bl = new LinkedList<Bullet>();
+	private LinkedList<IBullet> bl = new LinkedList<IBullet>();
 	
 	public void tick(){
 		for(int i=0; i < bl.size(); i++){
@@ -22,11 +24,11 @@ public class BulletController {
 		}
 	}
 	
-	public void addBullet(Bullet bullet){
+	public void addBullet(IBullet bullet){
 		bl.add(bullet);
 	}
 	
-	public void removeBullet(Bullet bullet){
+	public void removeBullet(IBullet bullet){
 		bl.remove(bullet);
 	}
 }
