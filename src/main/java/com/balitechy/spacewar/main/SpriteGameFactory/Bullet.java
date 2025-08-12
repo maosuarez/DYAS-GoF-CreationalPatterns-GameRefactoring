@@ -1,15 +1,16 @@
-package com.balitechy.spacewar.main.bullet;
+package com.balitechy.spacewar.main.SpriteGameFactory;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.balitechy.spacewar.main.Game;
+import com.balitechy.spacewar.main.AbstractComponents.ABullet;
 
-public class BulletImage extends Bullet{
+public class Bullet extends ABullet{
 	
 	private BufferedImage image;
 	
-	public BulletImage(double x, double y, Game game){
+	public Bullet(double x, double y, Game game){
 		super(x, y);
 		image = game.getSprites().getImage(35, 52, WIDTH, HEIGHT);
 	}

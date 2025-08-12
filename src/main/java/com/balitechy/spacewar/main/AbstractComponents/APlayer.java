@@ -1,10 +1,9 @@
-package com.balitechy.spacewar.main.player;
+package com.balitechy.spacewar.main.AbstractComponents;
 
 import com.balitechy.spacewar.main.Game;
-import com.balitechy.spacewar.main.bullet.IBullet;
-import com.balitechy.spacewar.main.factories.BulletFactory;
+import com.balitechy.spacewar.main.Interfaces.IPlayer;
 
-public abstract class Player implements IPlayer{
+public abstract class APlayer implements IPlayer{
     protected double x;
 	protected double y;
 	
@@ -13,7 +12,7 @@ public abstract class Player implements IPlayer{
 
 	protected Game game;
 
-    public Player(double x, double y, Game game){
+    public APlayer(double x, double y, Game game){
 		this.x = x;
 		this.y = y;
 		this.game = game;
@@ -42,12 +41,6 @@ public abstract class Player implements IPlayer{
 	public void setVelY(double velY) {
 		this.velY = velY;
 	}
-
-    public void shoot(){
-		IBullet b = BulletFactory.createBullet(x+(WIDTH/2)-5, y-18, game);
-		game.getBullets().addBullet(b);
-	}
-
 
 	public void tick(){
 		x += velX;

@@ -1,16 +1,18 @@
-package com.balitechy.spacewar.main.player;
+package com.balitechy.spacewar.main.SpriteGameFactory;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import com.balitechy.spacewar.main.Game;
+import com.balitechy.spacewar.main.AbstractComponents.APlayer;
+import com.balitechy.spacewar.main.Interfaces.IBullet;
 
-public class PlayerImage extends Player {
+public class Player extends APlayer {
 
 	private BufferedImage image;
 	
-	public PlayerImage(double x, double y, Game game){
+	public Player(double x, double y, Game game){
 		super(x, y, game);
 		
 		// Get image for Player		
@@ -20,5 +22,10 @@ public class PlayerImage extends Player {
 	public void render(Graphics g){
 		g.setColor(Color.white);
 		g.drawImage(image, (int) x, (int) y, null);
+	}
+
+	public void shoot(){
+		IBullet b = new Bullet(x+(WIDTH/2)-5, y-18, game);
+		game.getBullets().addBullet(b);
 	}
 }

@@ -9,10 +9,13 @@ import java.awt.image.BufferStrategy;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-import com.balitechy.spacewar.main.background.IBackground;
-import com.balitechy.spacewar.main.factories.BackgroundFactory;
-import com.balitechy.spacewar.main.factories.PlayerFactory;
-import com.balitechy.spacewar.main.player.IPlayer;
+
+import com.balitechy.spacewar.main.Interfaces.IBackground;
+import com.balitechy.spacewar.main.Interfaces.IPlayer;
+import com.balitechy.spacewar.main.SpriteGameFactory.SpriteGameFactory;
+import com.balitechy.spacewar.main.SpriteGameFactory.SpritesImageLoader;
+import com.balitechy.spacewar.main.VectorFullColorGameFactory.VectorFullColorGameFactory;
+import com.balitechy.spacewar.main.VectorGameFactory.VectorGameFactory;
 
 public class Game extends Canvas implements Runnable {
 
@@ -28,66 +31,28 @@ public class Game extends Canvas implements Runnable {
 	 * - "colorful-vectorial-style"
 	 * - IMAGE
 	 */
-	public String estilo = "colorful-vectorial-style";
-	public Style style;
 	
 	private boolean running = false;
 	private Thread thread;
 	/*private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);*/
 	
 	
-	private SpritesImageLoader sprites;
+	protected SpritesImageLoader sprites;
 	
 	//Game components
-	private IPlayer player;
-	private BulletController bullets;
-	private IBackground backgRenderer;
+	protected IPlayer player;
+	protected BulletController bullets;
+	protected IBackground backgRenderer;
 	
 	
-	public void init(){
-		requestFocus();
-		set_style();
-		
-		
-		sprites = new SpritesImageLoader("sprites.png");
-		try {			
-			sprites.loadImage();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		// Add keyboard listener
-		addKeyListener(new InputHandler(this));
-		
-		// Initialize game components.
-		
-		
-		// Set player position at the bottom center.
-		player = PlayerFactory.createPlayer((WIDTH * SCALE - IPlayer.WIDTH) / 2, HEIGHT * SCALE - 50 , this);
-		bullets = new BulletController();
-		backgRenderer= BackgroundFactory.createBackground(this);
-	}
-
-	private void set_style(){
-		switch (estilo) {
-			case "colorful-vectorial-style":
-				style = Style.COLOR;
-				break;
-			case "vectorial-style":
-				style = Style.DRAW;
-				break;		
-			default:
-				style = Style.IMAGE;
-				break;
-		}
+	public void init(){}
+	
+	public BulletController getBullets(){
+		return bullets;
 	}
 
 	public SpritesImageLoader getSprites(){
 		return sprites;
-	}
-	
-	public BulletController getBullets(){
-		return bullets;
 	}
 	
 	public void keyPressed(KeyEvent e) {
@@ -139,7 +104,7 @@ public class Game extends Canvas implements Runnable {
 		}
 	}
 	
-	private synchronized void start(){
+	public synchronized void start(){
 		if(running) return;
 		
 		running = true;
@@ -226,16 +191,22 @@ public class Game extends Canvas implements Runnable {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
 		////////////////////////////////
 		g.dispose();
 		bs.show();
 	}
-	
+
 	public static void main(String args[]){		
-		Game game = new Game();
+        Game game;
+
+		/*
+		 * Seleccionar el estilo que se quiere para el juego
+		 */
+
+		game = new VectorGameFactory();
+        game = new VectorFullColorGameFactory();
+        game = new SpriteGameFactory();
+
 		game.setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		game.setMaximumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 		game.setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));

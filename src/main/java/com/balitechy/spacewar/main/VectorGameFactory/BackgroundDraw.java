@@ -1,9 +1,11 @@
-package com.balitechy.spacewar.main.background;
+package com.balitechy.spacewar.main.VectorGameFactory;
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
+
+import com.balitechy.spacewar.main.Interfaces.IBackground;
 
 public class BackgroundDraw implements IBackground {
 

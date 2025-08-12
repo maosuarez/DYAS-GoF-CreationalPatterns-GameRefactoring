@@ -1,14 +1,21 @@
-package com.balitechy.spacewar.main.player;
+package com.balitechy.spacewar.main.VectorGameFactory;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import com.balitechy.spacewar.main.Game;
+import com.balitechy.spacewar.main.AbstractComponents.APlayer;
+import com.balitechy.spacewar.main.Interfaces.IBullet;
 
-public class PlayerDraw extends Player {
+public class PlayerDraw extends APlayer {
 	
 	public PlayerDraw(double x, double y, Game game){
 		super(x, y, game);
+	}
+
+    public void shoot(){
+		IBullet b = new BulletDraw(x+(WIDTH/2)-5, y-18);
+		game.getBullets().addBullet(b);
 	}
 	
 	@Override

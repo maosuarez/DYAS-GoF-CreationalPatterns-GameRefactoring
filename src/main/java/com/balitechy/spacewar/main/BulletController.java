@@ -3,7 +3,7 @@ package com.balitechy.spacewar.main;
 import java.awt.Graphics;
 import java.util.LinkedList;
 
-import com.balitechy.spacewar.main.bullet.IBullet;
+import com.balitechy.spacewar.main.Interfaces.IBullet;
 
 public class BulletController {
 	private LinkedList<IBullet> bl = new LinkedList<IBullet>();

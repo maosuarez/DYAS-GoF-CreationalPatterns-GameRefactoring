@@ -1,9 +1,11 @@
-package com.balitechy.spacewar.main.bullet;
+package com.balitechy.spacewar.main.VectorGameFactory;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class BulletDraw extends Bullet {
+import com.balitechy.spacewar.main.AbstractComponents.ABullet;
+
+public class BulletDraw extends ABullet {
 
     public BulletDraw(double x, double y) {
         super(x, y);

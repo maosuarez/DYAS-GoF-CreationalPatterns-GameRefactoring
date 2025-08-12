@@ -1,4 +1,4 @@
-package com.balitechy.spacewar.main.background;
+package com.balitechy.spacewar.main.Interfaces;
 
 import java.awt.Canvas;
 import java.awt.Graphics;

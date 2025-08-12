@@ -1,11 +1,11 @@
-package com.balitechy.spacewar.main.background;
+package com.balitechy.spacewar.main.SpriteGameFactory;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import com.balitechy.spacewar.main.SpritesImageLoader;
+import com.balitechy.spacewar.main.Interfaces.IBackground;
 
 public class BackgroundRenderer implements IBackground{
 

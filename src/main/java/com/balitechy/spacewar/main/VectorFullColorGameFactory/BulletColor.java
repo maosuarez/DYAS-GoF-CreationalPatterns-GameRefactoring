@@ -1,10 +1,12 @@
-package com.balitechy.spacewar.main.bullet;
+package com.balitechy.spacewar.main.VectorFullColorGameFactory;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-public class BulletColor extends Bullet {
+import com.balitechy.spacewar.main.AbstractComponents.ABullet;
+
+public class BulletColor extends ABullet {
 
     public BulletColor(double x, double y) {
         super(x, y);

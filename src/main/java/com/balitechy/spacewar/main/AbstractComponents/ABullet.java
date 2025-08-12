@@ -1,15 +1,17 @@
-package com.balitechy.spacewar.main.bullet;
+package com.balitechy.spacewar.main.AbstractComponents;
 
 import java.awt.Color;
 
-public abstract class Bullet implements IBullet{
+import com.balitechy.spacewar.main.Interfaces.IBullet;
+
+public abstract class ABullet implements IBullet{
     protected double x;
     protected double y;
     public static final int WIDTH = 11;
     public static final int HEIGHT = 21;
     protected Color bulletColor;
 
-    public Bullet(double x, double y) {
+    public ABullet(double x, double y) {
         this.x = x;
         this.y = y;
     }

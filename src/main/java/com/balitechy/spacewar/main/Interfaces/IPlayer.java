@@ -1,4 +1,4 @@
-package com.balitechy.spacewar.main.player;
+package com.balitechy.spacewar.main.Interfaces;
 
 import java.awt.Graphics;
 
