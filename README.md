@@ -5,12 +5,10 @@ Software de microcontrolador para la fabricación automática de pizza.
 
 # 🚀 Space War 2D
 
-**Space War 2D** es un juego desarrollado en Java que implementa el patrón de diseño **Abstract Factory** para permitir múltiples estilos visuales. El jugador controla una nave espacial que puede moverse en todas las direcciones y disparar balas, mientras se renderiza un fondo dinámico. El diseño del juego puede cambiar entre tres estilos distintos: vectorial, vectorial colorido y basado en sprites.
+**Space War 2D** es un juego desarrollado en Java que implementa el patrón de diseño **Abstract Factory** para permitir múltiples estilos visuales. El jugador controla una nave espacial que puede moverse en todas las direcciones y disparar balas. El diseño del juego puede cambiar entre tres estilos distintos: vectorial, vectorial colorido y basado en sprites.
 
 ## 🎮 Características
 
-- Movimiento del jugador con las teclas de dirección.
-- Disparo con la tecla `ESPACIO`.
 - Fondo animado, jugador y balas renderizados según el estilo seleccionado.
 - Uso del patrón **Abstract Factory** para desacoplar la lógica del juego del estilo gráfico.
 
